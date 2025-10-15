@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jornada de Cibersegurança: Na Trilha do Cyberbullying</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+    :root {
+      --azul-tech: #004A8D;
+      --laranja-tech: #F7941D;
+      --preto-brilhoso: #0a0a0a;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Share Tech Mono', monospace;
+      background: linear-gradient(135deg, #000000, #111111 60%, var(--preto-brilhoso));
+      color: white;
+    }
+
+    *{
+      background-color: #000;
+    }
+
+    header {
+      text-align: center;
+      padding: 40px 20px;
+      font-size: 2.2em;
+      color: var(--laranja-tech);
+      text-shadow: 0 0 10px var(--laranja-tech), 0 0 25px var(--azul-tech);
+      background-color: #000;
+      border-bottom: 2px solid var(--azul-tech);
+    }
+
+    .grupo-select {
+      text-align: center;
+      padding: 30px 20px;
+      background-color: #000;
+      margin: 20px auto;
+      border: 2px dashed var(--laranja-tech);
+      border-radius: 10px;
+      box-shadow: 0 0 15px var(--azul-tech);
+      max-width: 400px;
+    }
+
+    select {
+      background-color: #000;
+      color: white;
+      border: 2px solid var(--laranja-tech);
+      padding: 10px;
+      font-size: 1em;
+      border-radius: 5px;
+      width: 60%;
+      max-width: 200px;
+    }
+
+    button {
+      padding: 10px 25px;
+      margin-top: 15px;
+      background: linear-gradient(45deg, var(--laranja-tech), var(--azul-tech));
+      color: black;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 0 10px var(--laranja-tech);
+    }
+
+    .sala {
+      display: none;
+      margin: 20px auto;
+      padding: 25px 20px;
+      max-width: 400px;
+      width: 90vw;
+      min-height: 280px;
+      background-color: #000;
+      border: 2px solid var(--azul-tech);
+      border-left: 5px solid var(--laranja-tech);
+      border-radius: 12px;
+      color: white;
+      box-shadow: 0 0 15px var(--azul-tech);
+      flex-direction: column;
+      justify-content: space-between;
+      display: flex;
+      font-size: 1.2em;
+    }
+
+    .sala.aberta {
+      border-color: #00ff88;
+      background-color: #000;
+    }
+
+    .info-sala {
+      text-align: left;
+      margin-top: 10px;
+    }
+
+    .info-sala p {
+      margin: 5px 0;
+    }
+
+    .info-sala span {
+      font-weight: bold;
+      color: var(--laranja-tech);
+    }
+
+    .emoji-ambiente {
+      font-size: 3.5em;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .senha-input {
+      margin-top: auto;
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .senha-input input {
+      padding: 14px;
+      width: 65%;
+      background-color: #000;
+      color: white;
+      border: 2px solid var(--laranja-tech);
+      border-radius: 6px;
+      font-size: 1.1em;
+    }
+
+    .senha-input button {
+      padding: 14px 22px;
+      font-size: 1.1em;
+      font-weight: bold;
+    }
+
+    .dica {
+      margin-top: 14px;
+      font-style: italic;
+      color: var(--laranja-tech);
+      text-shadow: 0 0 6px var(--laranja-tech);
+      min-height: 3em;
+      transition: all 0.3s ease;
+      overflow-wrap: break-word;
+    }
+
+    #fim {
+      display: none;
+      text-align: center;
+      font-size: 2em;
+      padding: 35px 20px;
+      color: var(--laranja-tech);
+      text-shadow: 0 0 12px var(--laranja-tech);
+      max-width: 400px;
+      margin: 40px auto 80px;
+      background-color: #000;
+      border-radius: 12px;
+    }
+
+    @media (max-width: 420px) {
+      .sala {
+        font-size: 1.1em;
+        padding: 22px 16px;
+      }
+
+      .emoji-ambiente {
+        font-size: 3em;
+      }
+
+      .senha-input input {
+        font-size: 1em;
+      }
+
+      .senha-input button {
+        font-size: 1em;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>🔐 Jornada de Cibersegurança: Na Trilha do Cyberbullying</header>
+
+<div class="grupo-select" id="grupoSelect">
+  <h2>Selecione seu grupo:</h2>
+  <select id="grupoSelecionado">
+    <option value="">-- Escolha o grupo --</option>
+    <option value="1">Grupo 1</option>
+    <option value="2">Grupo 2</option>
+    <option value="3">Grupo 3</option>
+    <option value="4">Grupo 4</option>
+    <option value="5">Grupo 5</option>
+    <option value="6">Grupo 6</option>
+    <option value="7">Grupo 7</option>
+    <option value="8">Grupo 8</option>
+    <option value="9">Grupo 9</option>
+    <option value="10">Grupo 10</option>
+    <option value="11">Grupo 11</option>
+    <option value="12">Grupo 12</option>
+  </select><br />
+  <button onclick="confirmarGrupo()">Confirmar Grupo</button>
+</div>
+
+<div id="salasContainer"></div>
+
+<div id="fim">🎉 Vocês concluíram a jornada de cibersegurança! Todos para o foyer. 🛡️</div>
+
+<script>
+  const salasGrupo1 = [
+    { numero: 1, senha: "redes sociais", ambiente: "Laboratório de Informática - 306", local: "3° andar", emoji: "👨‍💻" },
+    { numero: 2, senha: "bibliografia", ambiente: "Biblioteca", local: "2° andar", emoji: "📖" },
+    { numero: 3, senha: "respeito", ambiente: "Cozinha - 101", local: "Térreo", emoji: "🧑‍🍳" },
+    { numero: 4, senha: "registro", ambiente: "Sala dos Professores", local: "1º andar", emoji: "👩‍🏫" },
+    { numero: 5, senha: "escuta ativa", ambiente: "Front Office - 203", local: "2º andar", emoji: "🛎️" },
+    { numero: 6, senha: "FVVFF", ambiente: "Laboratório de Hardware - 601", local: "6º andar", emoji: "🖱️" },
+    { numero: 7, senha: "acompanhamento", ambiente: "Sala de Hospitalidade - 204", local: "2º andar", emoji: "🛏️" },
+    { numero: 8, senha: "35", ambiente: "Terraço", local: "5º andar", emoji: "🏫" },
+    { numero: 9, senha: "legislação", ambiente: "Secretaria", local: "Térreo", emoji: "📋" },
+    { numero: 10, senha: "diálogo", ambiente: "Quadra", local: "Térreo", emoji: "🏀" },
+    { numero: 11, senha: "privacidade", ambiente: "Banheiro", local: "1º andar", emoji: "🚻" },
+    { numero: 12, senha: "2345", ambiente: "Coordenação", local: "Térreo", emoji: "✉️" }
+  ];
+    const salasGrupo2 = [
+        { numero: 1, senha: "bibliografia", ambiente: "Biblioteca", local: "2° andar", emoji: "📖" },
+        { numero: 2, senha: "respeito", ambiente: "Cozinha - 101", local: "Térreo", emoji: "🧑‍🍳" },
+        { numero: 3, senha: "registro", ambiente: "Sala dos Professores", local: "1º andar", emoji: "👩‍🏫" },
+        { numero: 4, senha: "escuta ativa", ambiente: "Front Office - 203", local: "2º andar", emoji: "🛎️" },
+        { numero: 5, senha: "FVVFF", ambiente: "Laboratório de Hardware - 601", local: "6º andar", emoji: "🖱️" },
+        { numero: 6, senha: "acompanhamento", ambiente: "Sala de Hospitalidade - 204", local: "2º andar", emoji: "🛏️" },
+        { numero: 7, senha: "35", ambiente: "Terraço", local: "5º andar", emoji: "🏫" },
+        { numero: 8, senha: "legislação", ambiente: "Secretaria", local: "Térreo", emoji: "📋" },
+        { numero: 9, senha: "diálogo", ambiente: "Quadra", local: "Térreo", emoji: "🏀" },
+        { numero: 10, senha: "privacidade", ambiente: "Banheiro", local: "1º andar", emoji: "🚻" },
+        { numero: 11, senha: "2345", ambiente: "Coordenação", local: "Térreo", emoji: "✉️" },
+        { numero: 12, senha: "redes sociais", ambiente: "Laboratório de Informática - 306", local: "3° andar", emoji: "👨‍💻" }
+    ];
+
+    const salasGrupo3 = [
+    { numero: 1, senha: "respeito", ambiente: "Cozinha - 101", local: "Térreo", emoji: "🧑‍🍳" },
+    { numero: 2, senha: "registro", ambiente: "Sala dos Professores", local: "1º andar", emoji: "👩‍🏫" },
+    { numero: 3, senha: "escuta ativa", ambiente: "Front Office - 203", local: "2º andar", emoji: "🛎️" },
+    { numero: 4, senha: "FVVFF", ambiente: "Laboratório de Hardware - 601", local: "6º andar", emoji: "🖱️" },
+    { numero: 5, senha: "acompanhamento", ambiente: "Sala de Hospitalidade - 204", local: "2º andar", emoji: "🛏️" },
+    { numero: 6, senha: "35", ambiente: "Terraço", local: "5º andar", emoji: "🏫" },
+    { numero: 7, senha: "legislação", ambiente: "Secretaria", local: "Térreo", emoji: "📋" },
+    { numero: 8, senha: "diálogo", ambiente: "Quadra", local: "Térreo", emoji: "🏀" },
+    { numero: 9, senha: "privacidade", ambiente: "Banheiro", local: "1º andar", emoji: "🚻" },
+    { numero: 10, senha: "2345", ambiente: "Coordenação", local: "Térreo", emoji: "✉️" },
+    { numero: 11, senha: "redes sociais", ambiente: "Laboratório de Informática - 306", local: "3° andar", emoji: "👨‍💻" },
+    { numero: 12, senha: "bibliografia", ambiente: "Biblioteca", local: "2° andar", emoji: "📖" }
+    ];
+
+    const salasGrupo4 = [
+    { numero: 1, senha: "registro", ambiente: "Sala dos Professores", local: "1º andar", emoji: "👩‍🏫" },
+    { numero: 2, senha: "escuta ativa", ambiente: "Front Office - 203", local: "2º andar", emoji: "🛎️" },
+    { numero: 3, senha: "FVVFF", ambiente: "Laboratório de Hardware - 601", local: "6º andar", emoji: "🖱️" },
+    { numero: 4, senha: "acompanhamento", ambiente: "Sala de Hospitalidade - 204", local: "2º andar", emoji: "🛏️" },
+    { numero: 5, senha: "35", ambiente: "Terraço", local: "5º andar", emoji: "🏫" },
+    { numero: 6, senha: "legislação", ambiente: "Secretaria", local: "Térreo", emoji: "📋" },
+    { numero: 7, senha: "diálogo", ambiente: "Quadra", local: "Térreo", emoji: "🏀" },
+    { numero: 8, senha: "privacidade", ambiente: "Banheiro", local: "1º andar", emoji: "🚻" },
+    { numero: 9, senha: "2345", ambiente: "Coordenação", local: "Térreo", emoji: "✉️" },
+    { numero: 10, senha: "redes sociais", ambiente: "Laboratório de Informática - 306", local: "3° andar", emoji: "👨‍💻" },
+    { numero: 11, senha: "bibliografia", ambiente: "Biblioteca", local: "2° andar", emoji: "📖" },
+    { numero: 12, senha: "respeito", ambiente: "Cozinha - 101", local: "Térreo", emoji: "🧑‍🍳" }
+    ];
+
+    const salasGrupo5 = [
+    { numero: 1, senha: "escuta ativa", ambiente: "Front Office - 203", local: "2º andar", emoji: "🛎️" },
+    { numero: 2, senha: "FVVFF", ambiente: "Laboratório de Hardware - 601", local: "6º andar", emoji: "🖱️" },
+    { numero: 3, senha: "acompanhamento", ambiente: "Sala de Hospitalidade - 204", local: "2º andar", emoji: "🛏️" },
+    { numero: 4, senha: "35", ambiente: "Terraço", local: "5º andar", emoji: "🏫" },
+    { numero: 5, senha: "legislação", ambiente: "Secretaria", local: "Térreo", emoji: "📋" },
+    { numero: 6, senha: "diálogo", ambiente: "Quadra", local: "Térreo", emoji: "🏀" },
+    { numero: 7, senha: "privacidade", ambiente: "Banheiro", local: "1º andar", emoji: "🚻" },
+    { numero: 8, senha: "2345", ambiente: "Coordenação", local: "Térreo", emoji: "✉️" },
+    { numero: 9, senha: "redes sociais", ambiente: "Laboratório de Informática - 306", local: "3° andar", emoji: "👨‍💻" },
+    { numero: 10, senha: "bibliografia", ambiente: "Biblioteca", local: "2° andar", emoji: "📖" },
+    { numero: 11, senha: "respeito", ambiente: "Cozinha - 101", local: "Térreo", emoji: "🧑‍🍳" },
+    { numero: 12, senha: "registro", ambiente: "Sala dos Professores", local: "1º andar", emoji: "👩‍🏫" }
+    ];
+
+
+    const salasGrupo6 = [
+    { numero: 1, senha: "FVVFF", ambiente: "Laboratório de Hardware - 601", local: "6º andar", emoji: "🖱️" },
+    { numero: 2, senha: "acompanhamento", ambiente: "Sala de Hospitalidade - 204", local: "2º andar", emoji: "🛏️" },
+    { numero: 3, senha: "35", ambiente: "Terraço", local: "5º andar", emoji: "🏫" },
+    { numero: 4, senha: "legislação", ambiente: "Secretaria", local: "Térreo", emoji: "📋" },
+    { numero: 5, senha: "diálogo", ambiente: "Quadra", local: "Térreo", emoji: "🏀" },
+    { numero: 6, senha: "privacidade", ambiente: "Banheiro", local: "1º andar", emoji: "🚻" },
+    { numero: 7, senha: "2345", ambiente: "Coordenação", local: "Térreo", emoji: "✉️" },
+    { numero: 8, senha: "redes sociais", ambiente: "Laboratório de Informática - 306", local: "3° andar", emoji: "👨‍💻" },
+    { numero: 9, senha: "bibliografia", ambiente: "Biblioteca", local: "2° andar", emoji: "📖" },
+    { numero: 10, senha: "respeito", ambiente: "Cozinha - 101", local: "Térreo", emoji: "🧑‍🍳" },
+    { numero: 11, senha: "registro", ambiente: "Sala dos Professores", local: "1º andar", emoji: "👩‍🏫" },
+    { numero: 12, senha: "escuta ativa", ambiente: "Front Office - 203", local: "2º andar", emoji: "🛎️" }
+    ];
+
+
+    const salasGrupo7 = [
+    { numero: 1, senha: "acompanhamento", ambiente: "Sala de Hospitalidade - 204", local: "2º andar", emoji: "🛏️" },
+    { numero: 2, senha: "35", ambiente: "Terraço", local: "5º andar", emoji: "🏫" },
+    { numero: 3, senha: "legislação", ambiente: "Secretaria", local: "Térreo", emoji: "📋" },
+    { numero: 4, senha: "diálogo", ambiente: "Quadra", local: "Térreo", emoji: "🏀" },
+    { numero: 5, senha: "privacidade", ambiente: "Banheiro", local: "1º andar", emoji: "🚻" },
+    { numero: 6, senha: "2345", ambiente: "Coordenação", local: "Térreo", emoji: "✉️" },
+    { numero: 7, senha: "redes sociais", ambiente: "Laboratório de Informática - 306", local: "3° andar", emoji: "👨‍💻" },
+    { numero: 8, senha: "bibliografia", ambiente: "Biblioteca", local: "2° andar", emoji: "📖" },
+    { numero: 9, senha: "respeito", ambiente: "Cozinha - 101", local: "Térreo", emoji: "🧑‍🍳" },
+    { numero: 10, senha: "registro", ambiente: "Sala dos Professores", local: "1º andar", emoji: "👩‍🏫" },
+    { numero: 11, senha: "escuta ativa", ambiente: "Front Office - 203", local: "2º andar", emoji: "🛎️" },
+    { numero: 12, senha: "FVVFF", ambiente: "Laboratório de Hardware - 601", local: "6º andar", emoji: "🖱️" }
+    ];
+
+
+    const salasGrupo8 = [
+    { numero: 1, senha: "35", ambiente: "Terraço", local: "5º andar", emoji: "🏫" },
+    { numero: 2, senha: "legislação", ambiente: "Secretaria", local: "Térreo", emoji: "📋" },
+    { numero: 3, senha: "diálogo", ambiente: "Quadra", local: "Térreo", emoji: "🏀" },
+    { numero: 4, senha: "privacidade", ambiente: "Banheiro", local: "1º andar", emoji: "🚻" },
+    { numero: 5, senha: "2345", ambiente: "Coordenação", local: "Térreo", emoji: "✉️" },
+    { numero: 6, senha: "redes sociais", ambiente: "Laboratório de Informática - 306", local: "3° andar", emoji: "👨‍💻" },
+    { numero: 7, senha: "bibliografia", ambiente: "Biblioteca", local: "2° andar", emoji: "📖" },
+    { numero: 8, senha: "respeito", ambiente: "Cozinha - 101", local: "Térreo", emoji: "🧑‍🍳" },
+    { numero: 9, senha: "registro", ambiente: "Sala dos Professores", local: "1º andar", emoji: "👩‍🏫" },
+    { numero: 10, senha: "escuta ativa", ambiente: "Front Office - 203", local: "2º andar", emoji: "🛎️" },
+    { numero: 11, senha: "FVVFF", ambiente: "Laboratório de Hardware - 601", local: "6º andar", emoji: "🖱️" },
+    { numero: 12, senha: "acompanhamento", ambiente: "Sala de Hospitalidade - 204", local: "2º andar", emoji: "🛏️" }
+    ];
+
+
+    const salasGrupo9 = [
+    { numero: 1, senha: "legislação", ambiente: "Secretaria", local: "Térreo", emoji: "📋" },
+    { numero: 2, senha: "diálogo", ambiente: "Quadra", local: "Térreo", emoji: "🏀" },
+    { numero: 3, senha: "privacidade", ambiente: "Banheiro", local: "1º andar", emoji: "🚻" },
+    { numero: 4, senha: "2345", ambiente: "Coordenação", local: "Térreo", emoji: "✉️" },
+    { numero: 5, senha: "redes sociais", ambiente: "Laboratório de Informática - 306", local: "3° andar", emoji: "👨‍💻" },
+    { numero: 6, senha: "bibliografia", ambiente: "Biblioteca", local: "2° andar", emoji: "📖" },
+    { numero: 7, senha: "respeito", ambiente: "Cozinha - 101", local: "Térreo", emoji: "🧑‍🍳" },
+    { numero: 8, senha: "registro", ambiente: "Sala dos Professores", local: "1º andar", emoji: "👩‍🏫" },
+    { numero: 9, senha: "escuta ativa", ambiente: "Front Office - 203", local: "2º andar", emoji: "🛎️" },
+    { numero: 10, senha: "FVVFF", ambiente: "Laboratório de Hardware - 601", local: "6º andar", emoji: "🖱️" },
+    { numero: 11, senha: "acompanhamento", ambiente: "Sala de Hospitalidade - 204", local: "2º andar", emoji: "🛏️" },
+    { numero: 12, senha: "35", ambiente: "Terraço", local: "5º andar", emoji: "🏫" }
+    ];
+
+
+    const salasGrupo10 = [
+    { numero: 1, senha: "diálogo", ambiente: "Quadra", local: "Térreo", emoji: "🏀" },
+    { numero: 2, senha: "privacidade", ambiente: "Banheiro", local: "1º andar", emoji: "🚻" },
+    { numero: 3, senha: "2345", ambiente: "Coordenação", local: "Térreo", emoji: "✉️" },
+    { numero: 4, senha: "redes sociais", ambiente: "Laboratório de Informática - 306", local: "3° andar", emoji: "👨‍💻" },
+    { numero: 5, senha: "bibliografia", ambiente: "Biblioteca", local: "2° andar", emoji: "📖" },
+    { numero: 6, senha: "respeito", ambiente: "Cozinha - 101", local: "Térreo", emoji: "🧑‍🍳" },
+    { numero: 7, senha: "registro", ambiente: "Sala dos Professores", local: "1º andar", emoji: "👩‍🏫" },
+    { numero: 8, senha: "escuta ativa", ambiente: "Front Office - 203", local: "2º andar", emoji: "🛎️" },
+    { numero: 9, senha: "FVVFF", ambiente: "Laboratório de Hardware - 601", local: "6º andar", emoji: "🖱️" },
+    { numero: 10, senha: "acompanhamento", ambiente: "Sala de Hospitalidade - 204", local: "2º andar", emoji: "🛏️" },
+    { numero: 11, senha: "35", ambiente: "Terraço", local: "5º andar", emoji: "🏫" },
+    { numero: 12, senha: "legislação", ambiente: "Secretaria", local: "Térreo", emoji: "📋" }
+    ];
+
+
+    const salasGrupo11 = [
+    { numero: 1, senha: "privacidade", ambiente: "Banheiro", local: "1º andar", emoji: "🚻" },
+    { numero: 2, senha: "2345", ambiente: "Coordenação", local: "Térreo", emoji: "✉️" },
+    { numero: 3, senha: "redes sociais", ambiente: "Laboratório de Informática - 306", local: "3° andar", emoji: "👨‍💻" },
+    { numero: 4, senha: "bibliografia", ambiente: "Biblioteca", local: "2° andar", emoji: "📖" },
+    { numero: 5, senha: "respeito", ambiente: "Cozinha - 101", local: "Térreo", emoji: "🧑‍🍳" },
+    { numero: 6, senha: "registro", ambiente: "Sala dos Professores", local: "1º andar", emoji: "👩‍🏫" },
+    { numero: 7, senha: "escuta ativa", ambiente: "Front Office - 203", local: "2º andar", emoji: "🛎️" },
+    { numero: 8, senha: "FVVFF", ambiente: "Laboratório de Hardware - 601", local: "6º andar", emoji: "🖱️" },
+    { numero: 9, senha: "acompanhamento", ambiente: "Sala de Hospitalidade - 204", local: "2º andar", emoji: "🛏️" },
+    { numero: 10, senha: "35", ambiente: "Terraço", local: "5º andar", emoji: "🏫" },
+    { numero: 11, senha: "legislação", ambiente: "Secretaria", local: "Térreo", emoji: "📋" },
+    { numero: 12, senha: "diálogo", ambiente: "Quadra", local: "Térreo", emoji: "🏀" }
+    ];
+
+
+const salasGrupo12 = [
+  { numero: 1, senha: "2345", ambiente: "Coordenação", local: "Térreo", emoji: "✉️" },
+  { numero: 2, senha: "redes sociais", ambiente: "Laboratório de Informática - 306", local: "3° andar", emoji: "👨‍💻" },
+  { numero: 3, senha: "bibliografia", ambiente: "Biblioteca", local: "2° andar", emoji: "📖" },
+  { numero: 4, senha: "respeito", ambiente: "Cozinha - 101", local: "Térreo", emoji: "🧑‍🍳" },
+  { numero: 5, senha: "registro", ambiente: "Sala dos Professores", local: "1º andar", emoji: "👩‍🏫" },
+  { numero: 6, senha: "escuta ativa", ambiente: "Front Office - 203", local: "2º andar", emoji: "🛎️" },
+  { numero: 7, senha: "FVVFF", ambiente: "Laboratório de Hardware - 601", local: "6º andar", emoji: "🖱️" },
+  { numero: 8, senha: "acompanhamento", ambiente: "Sala de Hospitalidade - 204", local: "2º andar", emoji: "🛏️" },
+  { numero: 9, senha: "35", ambiente: "Terraço", local: "5º andar", emoji: "🏫" },
+  { numero: 10, senha: "legislação", ambiente: "Secretaria", local: "Térreo", emoji: "📋" },
+  { numero: 11, senha: "diálogo", ambiente: "Quadra", local: "Térreo", emoji: "🏀" },
+  { numero: 12, senha: "privacidade", ambiente: "Banheiro", local: "1º andar", emoji: "🚻" }
+];
+
+
+
+  const container = document.getElementById('salasContainer');
+
+  function confirmarGrupo() {
+    const grupo = parseInt(document.getElementById("grupoSelecionado").value);
+    if (!grupo || grupo < 1 || grupo > 12) {
+      alert("Por favor, selecione um grupo válido.");
+      return;
+    }
+
+    document.getElementById("grupoSelect").style.display = "none";
+
+    if (grupo === 1) {
+    gerarSalas(salasGrupo1);
+    } 
+    else if (grupo === 2) {
+    gerarSalas(salasGrupo2);
+    }
+    else if (grupo === 3) {
+    gerarSalas(salasGrupo3);
+    }
+    else if (grupo === 4) {
+    gerarSalas(salasGrupo4);
+    }
+    else if (grupo === 5) {
+    gerarSalas(salasGrupo5);
+    }
+    else if (grupo === 6) {
+    gerarSalas(salasGrupo6);
+    }
+    else if (grupo === 7) {
+    gerarSalas(salasGrupo7);
+    }
+    else if (grupo === 8) {
+    gerarSalas(salasGrupo8);
+    }
+    else if (grupo === 9) {
+    gerarSalas(salasGrupo9);
+    }
+    else if (grupo === 10) {
+    gerarSalas(salasGrupo10);
+    }
+    else if (grupo === 11) {
+    gerarSalas(salasGrupo11);
+    }
+    else if (grupo === 12) {
+    gerarSalas(salasGrupo12);
+    }
+    else {
+    container.innerHTML = "<p>Grupo ainda não configurado. Aguarde!</p>";
+    }
+  }
+
+  function gerarSalas(salas) {
+    container.innerHTML = "";
+    salas.forEach((sala, index) => {
+      const div = document.createElement('div');
+      div.className = "sala";
+      div.id = "sala" + sala.numero;
+      div.style.display = index === 0 ? "flex" : "none";
+
+      div.innerHTML = `
+        <div class="emoji-ambiente">${sala.emoji}</div>
+        <div class="info-sala">
+          <p><span>Ambiente:</span> ${sala.ambiente}</p>
+          <p><span>Local:</span> ${sala.local}</p>
+        </div>
+        <div class="senha-input">
+          <input type="password" id="senha${sala.numero}" placeholder="Digite a senha" />
+          <button onclick="verificarSenha(${sala.numero}, '${sala.senha}')">Abrir</button>
+        </div>
+        <div class="dica" id="dica${sala.numero}"></div>
+      `;
+      container.appendChild(div);
+    });
+  }
+
+  function verificarSenha(numero, senhaCorreta) {
+    const valor = document.getElementById("senha" + numero).value.trim();
+    const dica = document.getElementById("dica" + numero);
+
+    if (valor === senhaCorreta) {
+      dica.textContent = "✅ Senha correta! Você pode avançar para a próxima sala.";
+      liberarProximaSala(numero);
+    } else {
+      dica.textContent = "❌ Senha incorreta. Tente novamente.";
+    }
+  }
+
+  function liberarProximaSala(numero) {
+    const inputAtual = document.getElementById("senha" + numero);
+    const buttonAtual = inputAtual.nextElementSibling;
+    inputAtual.disabled = true;
+    buttonAtual.disabled = true;
+
+    const salaAtual = document.getElementById("sala" + numero);
+    salaAtual.classList.add("aberta");
+
+    const proximaSala = document.getElementById("sala" + (numero + 1));
+    if (proximaSala) {
+      proximaSala.style.display = "flex";
+      proximaSala.scrollIntoView({ behavior: "smooth" });
+    } else {
+      document.getElementById("fim").style.display = "block";
+      document.getElementById("fim").scrollIntoView({ behavior: "smooth" });
+    }
+  }
+</script>
+
+</body>
+</html>
